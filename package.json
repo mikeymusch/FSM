@@ -1,0 +1,11 @@
+{
+  "name": "com.mikeymusch.fsm",
+  "version": "1.0.0",
+  "displayName": "FSM",
+  "unity": "2019.1",
+  "dependencies": {},
+  "keywords": ["library", "finite state machine", "scriptableobject state machine", "ai state"],
+  "author": "Mikey Musch",
+  "email": "mikeymusch@gmail.com",
+  "url": "http://mikeymusch.com"
+}
