@@ -3,11 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/State")]
 public class State : ScriptableObject
 {
+    [SerializeField] string name;
     [SerializeField] Action[] enterActions;
     [SerializeField] Action[] updateActions;
     [SerializeField] Action[] fixedUpdateActions;
     [SerializeField] Action[] exitActions;
     [SerializeField] Transition[] transitions;
+    
+    public string Name => name;
 
     public void DoEnterActions(StateMachine stateMachine)
     {
