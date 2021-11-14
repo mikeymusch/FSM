@@ -4,6 +4,8 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] State initialState;
     State _currentState;
+    
+    public State CurrentState => _currentState;
 
     public void Awake()
     {
