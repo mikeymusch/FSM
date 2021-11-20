@@ -4,10 +4,10 @@ using UnityEngine;
 public class State : ScriptableObject
 {
     [SerializeField] string name;
-    [SerializeField] Action[] enterActions;
-    [SerializeField] Action[] updateActions;
-    [SerializeField] Action[] fixedUpdateActions;
-    [SerializeField] Action[] exitActions;
+    [SerializeField] Action<StateMachine>[] enterActions;
+    [SerializeField] Action<StateMachine>[] updateActions;
+    [SerializeField] Action<StateMachine>[] fixedUpdateActions;
+    [SerializeField] Action<StateMachine>[] exitActions;
     [SerializeField] Transition[] transitions;
     
     public string Name => name;
@@ -42,7 +42,7 @@ public class State : ScriptableObject
         return this;
     }
 
-    void LoopThroughAndAct(Action[] actions, StateMachine stateMachine)
+    void LoopThroughAndAct(Action<StateMachine>[] actions, StateMachine stateMachine)
     {
         for (int i = 0; i < actions.Length; i++)
         {
