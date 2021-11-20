@@ -3,41 +3,41 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     [SerializeField] State initialState;
-    State _currentState;
+    protected State _currentState;
     
     public State CurrentState => _currentState;
 
-    public void Awake()
+    protected virtual void Awake()
     {
         Initialize(initialState);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         _currentState.DoUpdateActions(this);
         ChangeStateIfNecessary(this);
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         _currentState.DoFixedUpdateActions(this);
     }
 
     #region State Changing Methods
 
-    void ChangeState(State state)
+    protected virtual void ChangeState(State state)
     {
         _currentState.DoExitActions(this);
         Initialize(state);
     }
 
-    void Initialize(State state)
+    protected virtual void Initialize(State state)
     {
         _currentState = state;
         _currentState.DoEnterActions(this);
     }
 
-    void ChangeStateIfNecessary(StateMachine stateMachine)
+    protected virtual void ChangeStateIfNecessary(StateMachine stateMachine)
     {
         var nextState = _currentState.CheckTransitions(this);
         if (nextState != _currentState)
